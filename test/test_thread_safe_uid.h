@@ -6,7 +6,7 @@
 #define NUM_OF_UIDS (100)
 
 pthread_t threads[NUM_OF_THREADS] = {0};
-ilrd_uid_t uids[NUM_OF_UIDS] = {0};
+uid_t uids[NUM_OF_UIDS] = {0};
 
 void* ThreadCreateWorkLoad(void* arg)
 {

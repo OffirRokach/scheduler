@@ -3,7 +3,7 @@
 
 #include <stddef.h>   /* size_t */
 
-#include "thread_safe_uid.h" /* ilrd_uid_t */
+#include "thread_safe_uid.h" /* uid_t */
 
 typedef struct task task_t;
 
@@ -53,7 +53,7 @@ int TaskRun(task_t* task);
 *   @time complex: 	O(1) for both AC/WC
 *   @space complex: O(1) for both AC/WC
 */
-ilrd_uid_t TaskGetUID(const task_t* task);
+uid_t TaskGetUID(const task_t* task);
 
 /*
 *   @desc:          Returns @task's next scheduled run time
@@ -75,7 +75,7 @@ size_t TaskGetScheduledTime(const task_t* task);
 */
 int TaskIsEqual(const task_t* task1, const task_t* task2);
 
-ilrd_uid_t TaskGetBadUID(void);
+uid_t TaskGetBadUID(void);
 
 void TaskSetTimeToRun(task_t* task, time_t time_to_run);
 

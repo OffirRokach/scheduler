@@ -1,16 +1,16 @@
 #include <stdio.h> /*printf*/
 #include <limits.h>
 
-#include "ilrd_uid.h"
+#include "thread_safe_uid.h"
 #include "testing_macros.h"
 #include "scheduler.h"
 
 
-static ilrd_uid_t* easy_task_checker;
+static uid_t* easy_task_checker;
 
 static int EasyTask(void* param)
 {
-	ilrd_uid_t* task = (ilrd_uid_t*)param;
+	uid_t* task = (uid_t*)param;
 	TEST("Easy task", UIDIsSame(*task, *easy_task_checker), 1);
 	++easy_task_checker;
 	return -1;
@@ -25,7 +25,7 @@ static int StopRequest(void* param)
 static void TestScheduler(void)
 {
 	scheduler_t* scheduler = SchedulerCreate();
-	ilrd_uid_t uids[5];
+	uid_t uids[5];
 	size_t i = 0;
 	int res = 0;
 	status_t status;

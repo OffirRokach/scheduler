@@ -5,14 +5,14 @@
 
 #include "thread_safe_uid.h" 
 
-#define SIZEOF_IP (sizeof(((ilrd_uid_t *)0)->ip))
+#define SIZEOF_IP (sizeof(((uid_t *)0)->ip))
 
-const ilrd_uid_t bad_uid = {0};
+const uid_t bad_uid = {0};
 
-ilrd_uid_t UIDCreate(void)
+uid_t UIDCreate(void)
 {
 	static atomic_int atomic_counter = 0;
-	ilrd_uid_t uid;
+	uid_t uid;
 	struct ifaddrs* ifaddrs;	
 	uid.counter = atomic_fetch_add(&atomic_counter, 1);
 	uid.time = time(NULL);
@@ -35,7 +35,7 @@ ilrd_uid_t UIDCreate(void)
 	return uid; 
 }
 
-int UIDIsSame(ilrd_uid_t uid1, ilrd_uid_t uid2)
+int UIDIsSame(uid_t uid1, uid_t uid2)
 {
 	return ((uid1.time == uid2.time) && (uid1.counter == uid2.counter) 
 	&& (uid1.pid == uid2.pid) && (memcmp((const char*)uid1.ip, 

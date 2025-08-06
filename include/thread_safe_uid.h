@@ -11,9 +11,9 @@ typedef struct
     size_t counter;
     pid_t pid;
     unsigned char ip[14];
-}ilrd_uid_t;
+}uid_t;
 
-extern const ilrd_uid_t bad_uid;
+extern const uid_t bad_uid;
 
 /* 
 *   @desc:          Create Unique UID.
@@ -23,7 +23,7 @@ extern const ilrd_uid_t bad_uid;
 *   @time complex: 	O(n)
 *   @space complex: O(n)
 */
-ilrd_uid_t UIDCreate(void);
+uid_t UIDCreate(void);
 
 
 /* 
@@ -35,6 +35,6 @@ ilrd_uid_t UIDCreate(void);
 *   @time complex: 	O(1)
 *   @space complex: O(1)
 */
-int UIDIsSame(ilrd_uid_t uid1, ilrd_uid_t uid2);
+int UIDIsSame(uid_t uid1, uid_t uid2);
 
 #endif

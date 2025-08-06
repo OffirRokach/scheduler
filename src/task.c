@@ -8,7 +8,7 @@
 
 struct task
 {
-    ilrd_uid_t uid;
+    uid_t uid;
     int (*action_func)(void* remaining_reps);
     void* remaining_reps;
     size_t interval_in_sec;
@@ -55,7 +55,7 @@ int TaskRun(task_t* task)
 	return task->action_func(task->remaining_reps);
 }
 
-ilrd_uid_t TaskGetUID(const task_t* task)
+uid_t TaskGetUID(const task_t* task)
 {
 	assert(task);
 	return task->uid;

@@ -28,7 +28,7 @@ static int compare_func(const void* data1, const void* data2)
 static int is_match(const void* data, const void* param)
 {
     const task_t* task_to_find = (const task_t*)data;
-    ilrd_uid_t* uid_identifier = (ilrd_uid_t*)param;
+    uid_t* uid_identifier = (uid_t*)param;
 
     return UIDIsSame(TaskGetUID(task_to_find), *uid_identifier);
 }
@@ -56,7 +56,7 @@ scheduler_t* SchedulerCreate(void)
     return scheduler;
 }
 
-ilrd_uid_t SchedulerAdd(scheduler_t* scheduler,
+uid_t SchedulerAdd(scheduler_t* scheduler,
 						int (*action_func)(void* params),
 						void* params, size_t interval_in_sec)
 {
@@ -83,7 +83,7 @@ ilrd_uid_t SchedulerAdd(scheduler_t* scheduler,
     return TaskGetUID(task);
 }
 
-int SchedulerRemove(scheduler_t* scheduler, ilrd_uid_t identifier)
+int SchedulerRemove(scheduler_t* scheduler, uid_t identifier)
 {
     void* result = 	NULL;
 

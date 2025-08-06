@@ -3,7 +3,7 @@
 
 #include <stddef.h>     /* size_t */
 
-#include "ilrd_uid.h"   /* ilrd_uid_t */
+#include "thread_safe_uid.h"   /* uid_t */
 
 typedef struct scheduler scheduler_t;
 typedef enum status
@@ -60,7 +60,7 @@ void SchedulerDestroy(scheduler_t* scheduler);
 *   @time complex: 	O(n) for both AC/WC
 *   @space complex: O(1) for both AC/WC
 */
-ilrd_uid_t SchedulerAdd(scheduler_t* scheduler, int (*action_func)(void* params), void* params, size_t interval_in_sec);
+uid_t SchedulerAdd(scheduler_t* scheduler, int (*action_func)(void* params), void* params, size_t interval_in_sec);
 
 /* 
 *   @desc:          Removes a task from @scheduler identified by @identifier
@@ -76,7 +76,7 @@ ilrd_uid_t SchedulerAdd(scheduler_t* scheduler, int (*action_func)(void* params)
 *   @time complex: 	O(n) for both AC/WC
 *   @space complex: O(1) for both AC/WC
 */
-int SchedulerRemove(scheduler_t* scheduler, ilrd_uid_t identifier);
+int SchedulerRemove(scheduler_t* scheduler, uid_t identifier);
 
 /* 
 *   @desc:          Starts running @scheduler or if already running will return
